@@ -1,0 +1,15 @@
+page { margin: 0; padding: 0; color: #353535; background: #f8f8f8; }
+
+.hidden { display: none; }
+.yc-ellipsis {
+    line-height: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.yc-ellipsis.text-line-1 { -webkit-line-clamp: 1; }
+.yc-ellipsis.text-line-2 { -webkit-line-clamp: 2; }
+.yc-ellipsis.text-line-3 { -webkit-line-clamp: 3; }

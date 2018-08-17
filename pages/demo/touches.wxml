@@ -1,0 +1,32 @@
+<view class="page"> 
+  <scroll-view scroll-y class="page-bottom">
+    <view class="page-content">
+      <view class="wc"><text>第一个item1</text></view> 
+      <view class="wc"><text>第一个item2</text></view> 
+      <view class="wc"><text>第一个item3</text></view> 
+      <view class="wc"><text>第一个item4</text></view> 
+      <view class="wc"><text>第一个item5</text></view> 
+      <view class="wc"><text>第一个item6</text></view> 
+      <view class="wc"><text>第一个item7</text></view> 
+      <view class="wc"><text>第一个item8</text></view> 
+      <view class="wc"><text>第一个item9</text></view> 
+      <view class="wc"><text>第一个item10</text></view> 
+      <view class="wc"><text>第一个item11</text></view> 
+      <view class="wc"><text>第一个item12</text></view> 
+      <view class="wc"><text>第一个item13</text></view> 
+      <view class="wc"><text>第一个item14</text></view> 
+      <view class="wc"><text>第一个item15</text></view> 
+      <view class="wc"><text>第一个item16</text></view> 
+    </view> 
+  </scroll-view>
+  <view class="page-top"
+    bindtouchstart='touchStartFunc'
+    bindtouchmove='touchMoveFunc'
+    bindtouchend='touchEndFunc'
+    bindtouchcancel='touchCancelFunc'
+    bindlongtap='longtapFunc'
+    style='{{translate}} {{transform}}'
+  > 
+    <image bindtap="tap_ch" src="../../images/football.gif"></image> 
+  </view> 
+</view> 

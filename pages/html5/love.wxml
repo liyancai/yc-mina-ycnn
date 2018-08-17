@@ -1,0 +1,10 @@
+<view class='love-box'>
+    <view class='love'>
+        <text></text>
+        <text></text>
+    </view>
+</view>
+
+<view class='mylove'>
+<text>{{cont}}</text>
+</view>

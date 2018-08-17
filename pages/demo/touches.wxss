@@ -1,0 +1,36 @@
+page {
+    background: url("http://c.hiphotos.baidu.com/image/pic/item/ae51f3deb48f8c540e2d1dd336292df5e1fe7f54.jpg") no-repeat center center fixed;
+    background-size: cover;
+} 
+
+.page {
+    width: 100vw; overflow-x: hidden;
+    position: relative;
+}
+.page-top {
+    width: 100vw; height: 100vh;
+    background: skyblue;
+    position: absolute;
+    left: 0;
+    top: 0; 
+    transform: rotate(0deg) scale(1) translate(0%, 0%);  
+}
+.page-bottom {
+    width: 100vw; height: 100vh;
+    background: burlywood;
+}
+.page-bottom text {
+    width: 100vw;
+    line-height: 20vh;
+    display: inline-block;
+    border-bottom: 1px solid red;
+}
+.page-top image {
+    width: 30px; height: 30px;
+}
+.c-state1{ 
+    transform: rotate(0deg) scale(1) translate(75%, 0%);  
+}
+.c-state2{ 
+    transform: rotate(0deg) scale(.8) translate(75%, 0%);  
+}

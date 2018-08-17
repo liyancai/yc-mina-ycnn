@@ -1,0 +1,46 @@
+{
+    "pages":[
+        "pages/index/index",
+        "pages/html5/nan",
+        "pages/html5/love",
+        "pages/music/index",
+        "pages/demo/video",
+        "pages/demo/scroll-view",
+        "pages/demo/touches"
+    ],
+    "window": {
+        "backgroundColor": "#f5f5f5",
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#396",
+        "navigationBarTitleText": "YCNN",
+        "navigationBarTextStyle": "light"
+    },
+    "tabBar": {
+        "borderStyle": "black",
+        "selectedColor": "#339966",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "I"
+            },
+            {
+                "pagePath": "pages/html5/love",
+                "text": "love"
+            },
+            {
+                "pagePath": "pages/html5/nan",
+                "text": "you"
+            },
+            {
+                "pagePath": "pages/music/index",
+                "text": "!"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "debug": false
+}
