@@ -1,5 +1,6 @@
 {
     "pages":[
+        "pages/demo/canvas",
         "pages/index/index",
         "pages/html5/nan",
         "pages/html5/love",
