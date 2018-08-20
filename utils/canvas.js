@@ -60,7 +60,30 @@ const fillRadiusRect = (ctx, x, y, w, h, r) => {
     ctx.fill();
 }
 
+/**
+ * ctx : canvas上下文对象
+ * x: 起始位置横轴坐标
+ * y: 起始位置纵轴坐标
+ * w: 矩形宽度
+ * h: 矩形高度
+ * r: 圆角大小
+ */
+const strokeRadiusRect = (ctx, x, y, w, h, r) => {
+
+    ctx.beginPath();
+
+    ctx.moveTo(x + r, y);
+
+    ctx.arcTo(x + w, y, x + w, y + r, r);
+    ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+    ctx.arcTo(x, y + h, x, y + h - r, r);
+    ctx.arcTo(x, y, x + r, y, r);
+
+    ctx.stroke();
+}
+
 module.exports = {
     fillMultipleText: fillMultipleText,
-    fillRadiusRect: fillRadiusRect
+    fillRadiusRect: fillRadiusRect,
+    strokeRadiusRect: strokeRadiusRect
 }
