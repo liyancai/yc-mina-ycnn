@@ -1,4 +1,4 @@
-page { margin: 0; padding: 0; color: #353535; background: #f8f8f8; }
+page { margin: 0; padding: 0; color: #353535; background: #f8f8f8; font-size: 12pt; }
 
 .hidden { display: none; }
 .yc-ellipsis {
