@@ -1,0 +1,27 @@
+<view class='player'>
+    <image src="{{currentSong.cover}}" lazy-load='true'></image>
+    <view class="song-info">
+        <view>{{currentSong.title}}</view>
+        <view>{{currentSong.singer}}</view>
+    </view>
+
+    <view class='song-player {{songStatus}}'>
+        <image src="{{currentSong.cover}}" lazy-load='true'></image>
+    </view>
+
+    <view class='song-progress-bar'>
+        <span>{{'0:00'}}</span>
+        <slider min="0" max="100" value='70' block-size='12' />
+        <span>{{'3:18'}}</span>
+    </view>
+
+    <view class='song-opt'>
+        <span></span>
+        <image bindtap='bindPrevFunc' src='/images/music/skip-previous.svg'></image>
+        <image bindtap='bindPlayFunc' wx:if="{{songStatus == '' || songStatus == 'pause'}}" src='/images/music/play.svg'></image>
+        <image bindtap='bindPauseFunc' wx:if="{{songStatus == 'playing'}}" src='/images/music/pause.svg'></image>
+        <image bindtap='bindNextFunc' src='/images/music/skip-next.svg'></image>
+        <span></span>
+    </view>
+
+</view>
