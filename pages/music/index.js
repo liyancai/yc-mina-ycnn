@@ -22,8 +22,6 @@ Page({
             songList : music.songSheet
         })
 
-        console.log("currentSong:::" + this.data.currentSong)
-
         var that = this
         music.backgroundAudioManager = wx.getBackgroundAudioManager()
         music.backgroundAudioManager.onCanplay(function () {
@@ -65,7 +63,10 @@ Page({
     },
     onShow: function () {
         if(music.currentSong != undefined){
-            this.setData({ currentSong: music.currentSong })
+            this.setData({
+                currentSong: music.currentSong,
+                songStatus: music.songStatus,
+            })
         }
     },
     getSongList: function() {
@@ -104,13 +105,6 @@ Page({
                 "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=437387277&type=pic",
                 "url": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=437387277&type=url",
                 "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=437387277&type=lrc"
-            },
-            {
-                "title": "aLIEz",
-                "author": "mizuki",
-                "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=29307041&type=pic",
-                "url": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=29307041&type=url",
-                "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=29307041&type=lrc"
             },
             {
                 "title": "前前前世",
@@ -169,25 +163,11 @@ Page({
                 "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=526464145&type=lrc"
             },
             {
-                "title": "ハルノユキ",
-                "author": "リリィ、さよなら。",
-                "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=33233915&type=pic",
-                "url": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=33233915&type=url",
-                "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=33233915&type=lrc"
-            },
-            {
                 "title": "アイロニ",
                 "author": "majiko",
                 "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=31421442&type=pic",
                 "url": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=31421442&type=url",
                 "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=31421442&type=lrc"
-            },
-            {
-                "title": "Euterpe",
-                "author": "EGOIST",
-                "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=722932&type=pic",
-                "url": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=722932&type=url",
-                "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=722932&type=lrc"
             },
             {
                 "title": "眉间雪(纯歌版)",
@@ -880,7 +860,7 @@ Page({
         return songList
     },
     bindPlayFunc: function (e) {
-        var song = this.data.songList[e.target.dataset.index]
+        var song = this.data.songList[e.currentTarget.dataset.index]
         this.playSong(song)
     },
     bindPauseFunc: function (e) {
@@ -937,6 +917,13 @@ Page({
         })
         wx.setNavigationBarTitle({
             title: 'YCNN',
+        })
+    },
+    gotoPlayer: function(e) {
+        var song = this.data.songList[e.currentTarget.dataset.index]
+        this.playSong(song)
+        wx.navigateTo({
+            url: '/pages/music/player',
         })
     },
 

@@ -68,6 +68,11 @@ scroll-view {
 
 .song-list-item.playing .song-index image {
     animation: playing 5s linear infinite;
+    animation-play-state: running;
+}
+.song-list-item.pause .song-index image {
+    animation: playing 5s linear infinite;
+    animation-play-state: paused;
 }
 
 @keyframes playing {

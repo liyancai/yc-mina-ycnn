@@ -20,7 +20,7 @@
                 <text>{{(index < 9 ? '0' : '') + (index+1) + '.'}}</text>
                 <image class='hidden' src="{{item.cover}}"></image>
             </view>
-            <view class='song-info'>
+            <view class='song-info' data-index='{{index}}' bindtap='gotoPlayer'>
                 <view class="yc-ellipsis text-line-1">{{item.title}}</view>
                 <view class="yc-ellipsis text-line-1">{{item.singer}}</view>
             </view>
