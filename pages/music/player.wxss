@@ -7,15 +7,15 @@
     width: 100vw; height: 100vh;
     position: absolute;
     top: 0; left: 0; z-index: -1;
-    filter: blur(4vw) sepia(.3) saturate(.8);
+    filter: blur(1vw)  opacity(.4);
 }
 
 .song-info {
     height: 15vh;
-    border-bottom: 0px solid red;
 }
 .song-info view {
     padding: 20px 0 10px;
+    text-shadow: 1px 1px 1px #f8f8f8;
 }
 .song-info view:last-child {
     padding: 0;
@@ -27,11 +27,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 0px solid green;
 }
 .song-player image {
-    width: 70vw; height: 70vw;
+    width: 50vw; height: 50vw;
     border-radius: 50%;
+    background-color: #f8f8f8;
+    border: 12vw solid #353535;
 }
 .song-player.playing image {
     animation: playing 10s linear infinite;
@@ -42,26 +43,25 @@
     animation-play-state: paused;
 }
 .song-progress-bar {
-    padding: 0 8px;
     height: 10vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-top: 0px solid red;
-    border-bottom: 0px solid red;
 }
 .song-progress-bar span {
-    font-size: 10pt; color: #888888;
+    width: 15vw;
+    font-family: monospace; font-size: 10pt;
+    text-align: center;
 }
 .song-progress-bar slider {
-    width: 80vw;
+    margin: 0;
+    width: 70vw;
 }
 .song-opt {
     width: 100vw; height: 10vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 0px solid red;
 }
 .song-opt image {
     width: 10vw; height: 10vw;

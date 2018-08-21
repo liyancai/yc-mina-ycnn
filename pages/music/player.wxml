@@ -10,9 +10,9 @@
     </view>
 
     <view class='song-progress-bar'>
-        <span>{{'0:00'}}</span>
-        <slider min="0" max="100" value='70' block-size='12' />
-        <span>{{'3:18'}}</span>
+        <span>{{songCurrentTimeStr}}</span>
+        <slider min="0" max="{{songTime}}" value='{{songCurrentTime}}' block-size='12' disabled='true' />
+        <span>{{songTimeStr}}</span>
     </view>
 
     <view class='song-opt'>

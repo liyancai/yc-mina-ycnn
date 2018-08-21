@@ -29,6 +29,7 @@ Page({
         });
         music.backgroundAudioManager.onPlay(function () {
             console.log('onPlay........')
+            that.playSong()
         });
         music.backgroundAudioManager.onPause(function () {
             console.log('onPause........')
@@ -42,9 +43,9 @@ Page({
             console.log('onEnded........')
             that.bindNextFunc()
         });
-        music.backgroundAudioManager.onTimeUpdate(function () {
-            console.log('onTimeUpdate........')
-        });
+        // music.backgroundAudioManager.onTimeUpdate(function () {
+        //     console.log('onTimeUpdate........')
+        // });
         music.backgroundAudioManager.onError(function () {
             console.log('onError........')
             that.bindNextFunc()
@@ -66,6 +67,9 @@ Page({
             this.setData({
                 currentSong: music.currentSong,
                 songStatus: music.songStatus,
+            })
+            wx.setNavigationBarTitle({
+                title: music.currentSong.title
             })
         }
     },
@@ -890,6 +894,9 @@ Page({
     },
     /** 维护歌曲播放时的页面状态，并播放歌曲 */
     playSong: function(song){
+        if(song == undefined) {
+            song = music.currentSong
+        }
         music.currentSong = song
         music.songStatus = 'playing'
         this.setData({
@@ -921,7 +928,14 @@ Page({
     },
     gotoPlayer: function(e) {
         var song = this.data.songList[e.currentTarget.dataset.index]
-        this.playSong(song)
+
+        music.currentSong = song
+        music.songStatus = 'playing'
+        this.setData({
+            currentSong: music.currentSong,
+            songStatus: music.songStatus
+        })
+
         wx.navigateTo({
             url: '/pages/music/player',
         })

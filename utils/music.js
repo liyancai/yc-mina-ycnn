@@ -42,9 +42,17 @@ const stop = backgroundAudioManager => {
     backgroundAudioManager.stop()
 }
 
+const formatTime = time => {
+    time = Math.floor(time)
+    let m = Math.floor(time / 60)
+    let s = Math.floor(time % 60)
+    s = s > 9 ? s : ('0' + s)
+    return  m  + ':' + s
+}
 
 module.exports = {
     play: play,
     pause: pause,
-    stop: stop
+    stop: stop,
+    formatTime: formatTime
 }

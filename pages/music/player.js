@@ -6,7 +6,12 @@ Page({
     data: {
         currentSong: {},
         songList: [],
-        songStatus: ''
+        songStatus: '',
+        songTime: 0,
+        songCurrentTime: 0,
+        songCurrentTimeStr: '0:00',
+        songTimeStr: '0:00',
+        timer: null,
     },
     onLoad: function (options) {
         this.setData({
@@ -17,48 +22,100 @@ Page({
 
         var that = this
         music.backgroundAudioManager = wx.getBackgroundAudioManager()
-        music.backgroundAudioManager.onCanplay(function () {
-            console.log('onCanplay........')
-        });
         music.backgroundAudioManager.onPlay(function () {
-            console.log('onPlay........')
+            console.log('player-onPlay........')
+            that.playSong()
+
+            var songCurrentTime = music.backgroundAudioManager.currentTime
+            songCurrentTime = Math.floor(songCurrentTime == undefined ? 0 : songCurrentTime)
+
+            if (that.data.timer != null && that.data.timer != undefined) {
+                clearInterval(that.data.timer)
+            }
+            that.setData({
+                songCurrentTime: songCurrentTime,
+                songCurrentTimeStr: musicUtil.formatTime(songCurrentTime),
+                timer: setInterval(function () {
+                    var currentTime = that.data.songCurrentTime + 1
+                    that.setData({
+                        songCurrentTime: currentTime,
+                        songCurrentTimeStr: musicUtil.formatTime(currentTime)
+                    })
+                    if (currentTime > that.data.songTime) {
+                        clearInterval(that.data.timer)
+                    }
+                }, 1000)
+            })
+        });
+        music.backgroundAudioManager.onCanplay(function () {
+            console.log('player-onCanplay........')
+
+            var songTime = Math.floor(music.backgroundAudioManager.duration)
+            that.setData({
+                songTime: Math.floor(songTime),
+                songTimeStr: musicUtil.formatTime(songTime)
+            })
         });
         music.backgroundAudioManager.onPause(function () {
-            console.log('onPause........')
+            console.log('player-onPause........')
             that.pauseSong()
+            if(that.data.timer != null && that.data.timer != undefined) {
+                clearInterval(that.data.timer)
+            }
         });
         music.backgroundAudioManager.onStop(function () {
-            console.log('onStop........')
+            console.log('player-onStop........')
             that.stopSong()
         });
         music.backgroundAudioManager.onEnded(function () {
-            console.log('onEnded........')
+            console.log('player-onEnded........')
             that.bindNextFunc()
         });
         music.backgroundAudioManager.onTimeUpdate(function () {
-            console.log('onTimeUpdate........')
+            console.log('player-onTimeUpdate........')
         });
         music.backgroundAudioManager.onError(function () {
-            console.log('onError........')
+            console.log('player-onError........')
             that.bindNextFunc()
         });
-        music.backgroundAudioManager.onWaiting(function () {
-            console.log('onWaiting........')
-        });
         music.backgroundAudioManager.onPrev(function () {
-            console.log('onPrev........')
+            console.log('player-onPrev........')
             that.bindPrevFunc()
         });
         music.backgroundAudioManager.onNext(function () {
-            console.log('onNext........')
+            console.log('player-onNext........')
             that.bindNextFunc()
         });
     },
     onShow: function () {
         if (music.currentSong != undefined) {
-            this.setData({ currentSong: music.currentSong })
-            wx.setNavigationBarTitle({
-                title: music.currentSong.title
+            var that = this
+
+            this.playSong(music.currentSong)
+
+            var songTime = Math.floor(music.backgroundAudioManager.duration)
+            var songCurrentTime = music.backgroundAudioManager.currentTime
+            songCurrentTime = Math.floor(songCurrentTime == undefined ? 0 : songCurrentTime)
+
+
+            if(that.data.timer != null && that.data.timer != undefined) {
+                clearInterval(that.data.timer)
+            }
+            that.setData({
+                songTime: songTime,
+                songTimeStr: musicUtil.formatTime(songTime),
+                songCurrentTime: songCurrentTime,
+                songCurrentTimeStr: musicUtil.formatTime(songCurrentTime),
+                timer: setInterval(function () {
+                    var currentTime = that.data.songCurrentTime + 1
+                    that.setData({
+                        songCurrentTime: currentTime,
+                        songCurrentTimeStr: musicUtil.formatTime(currentTime)
+                    })
+                    if (currentTime > that.data.songTime) {
+                        clearInterval(that.data.timer)
+                    }
+                }, 1000)
             })
         }
     },
@@ -93,6 +150,9 @@ Page({
     },
     /** 维护歌曲播放时的页面状态，并播放歌曲 */
     playSong: function (song) {
+        if (song == undefined) {
+            song = music.currentSong
+        }
         music.currentSong = song
         music.songStatus = 'playing'
         this.setData({
