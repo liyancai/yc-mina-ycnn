@@ -27,18 +27,30 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
-.song-player image {
+.song-player image.disc {
     width: 50vw; height: 50vw;
     border-radius: 50%;
     background-color: #f8f8f8;
     border: 12vw solid #353535;
 }
-.song-player.playing image {
+.song-player image.stylus {
+    width: 55vw; height: 70vw;
+    position: absolute;
+    top: -5vh; right: 0; z-index: 1;
+    transition: all 1s;
+    transform: rotate(-5deg);
+}
+.song-player.playing image.stylus {
+    transform: rotate(10deg) translate(-2.5vw, -5.2vw);
+}
+
+.song-player.playing image.disc {
     animation: playing 10s linear infinite;
     animation-play-state: running;
 }
-.song-player.pause image {
+.song-player.pause image.disc {
     animation: playing 10s linear infinite;
     animation-play-state: paused;
 }

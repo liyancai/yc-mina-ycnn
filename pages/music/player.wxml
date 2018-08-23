@@ -6,7 +6,8 @@
     </view>
 
     <view class='song-player {{songStatus}}'>
-        <image src="{{currentSong.cover}}" lazy-load='true'></image>
+        <image class='disc' src="{{currentSong.cover}}" lazy-load='true'></image>
+        <image class='stylus' src="../../images/music/stylus-plus.png"></image>
     </view>
 
     <view class='song-progress-bar'>
