@@ -7,7 +7,7 @@
     width: 100vw; height: 100vh;
     position: absolute;
     top: 0; left: 0; z-index: -1;
-    filter: blur(1vw)  opacity(.4);
+    filter: blur(1px)  opacity(.4);
     background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAwICQoJBwwKCQoNDAwOER0TERAQESMZGxUdKiUsKyklKCguNEI4LjE/MigoOk46P0RHSktKLTdRV1FIVkJJSkf/2wBDAQwNDREPESITEyJHMCgwR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0f/wAARCABwAJYDASIAAhEBAxEB/8QAGwAAAwEBAQEBAAAAAAAAAAAAAgMEAAEGBQf/xAAdEAADAAMBAQEBAAAAAAAAAAAAAQIDITEREmFB/8QAGQEAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAERAhL/2gAMAwEAAhEDEQA/APu3RPlfQ6sRkrpA6fK+k1vY7LXSa3szOe7GTQhvYU0Zlc0ddaEKjroMBzJXSPM/fSjJWiXIykJUmbfpJkW2V5F6TXPrKFTVIv5KHIDk2jhXhg/AWhoFjhxnQWysK4Y3pjA/Q6sRdnHYqqOB0gyV0RTDtiqYGC3s6mCEvQaxks76DKO+B1sDb9EZEUNeoVUjSksSZF0nqSy5E1I/psS1ItyU1IukbTYnpAUvBtIVRTmlsBQDYTBbLRKhMcMPgPcOgGzNgs82114Gti2vRjRvkS1sK+Q1ISkYoF0cBMh/IxQGoNrYncC7gscfgu4/AyhiG4EXJdcE+SRvTeUdSJpFVrwnyIaUcS2vBNj7EUX4T6KoBh0Azp5RrhjGHK9oY6Y8jXoY4bwxkxWwaQyZAljZBQwUyMUmlDEgaBbkXclDQqzayTJJLkXhZk8JMz6MKTJ/SXJ/SnK+kmV9H5Cp8jEWxuR7EUzq4R6BTBYTYDZ08o1jGMUK9qC2FTFU/DxXpuujisXVeAfe+haqosfFEMXvo/HYMJV0UNTJYocq0LhTG9CremE60JyVphjE5a6RZa6PzV0hzX0aRistdI8ldG5a6S5KHkLaC30TTCp+i2zo5T6cbBbM2cbOnlKu+mOGH0j21MTkY23oRkfTyJHpE3Qp1sLI+iKrxjyBafF7KcV/p8+a2UY64G8ltfSx1womtEOOuFM1onYBzrQjLWmG60JyvQBxLmrpFmrpVmfSDM+jQtT5a2ya3sbkexFspCUFMFs62CW5JQtnGzrBbLykrvpgPTDaV7e2T5GUWybI+nncx3Wp8j6Ip7GZGIp7LSEtFL2Px1tEqex2N7DeS6vxUVRWiDFRXD0S6hoob0JyPQfuheTjJHSZn0gzMuzMhzdY0LUeTrE0OyCK6V5SoGCwmC2WkJQsFsKmA2OWuMwJjaD/2Q==');
     background-size: 100% 100%;
 }
@@ -51,10 +51,12 @@
 .song-player.playing image.disc {
     animation: playing 10s linear infinite;
     animation-play-state: running;
+    -webkit-animation-play-state: running;
 }
 .song-player.pause image.disc {
     animation: playing 10s linear infinite;
     animation-play-state: paused;
+    -webkit-animation-play-state: paused;
 }
 .song-progress-bar {
     height: 10vh;
@@ -64,7 +66,7 @@
 }
 .song-progress-bar span {
     width: 15vw;
-    font-family: monospace; font-size: 10pt;
+    font-family: monaco; font-size: 10pt;
     text-align: center;
 }
 .song-progress-bar slider {
