@@ -72,7 +72,7 @@ Page({
             that.bindNextFunc()
         });
         music.backgroundAudioManager.onTimeUpdate(function () {
-            console.log('player-onTimeUpdate........')
+            // console.log('player-onTimeUpdate........')
         });
         music.backgroundAudioManager.onError(function () {
             console.log('player-onError........')
@@ -93,8 +93,9 @@ Page({
 
             this.playSong(music.currentSong)
 
-            var songTime = Math.floor(music.backgroundAudioManager.duration)
+            var songTime = music.backgroundAudioManager.duration
             var songCurrentTime = music.backgroundAudioManager.currentTime
+            songTime = Math.floor(songTime == undefined ? 0 : songTime)
             songCurrentTime = Math.floor(songCurrentTime == undefined ? 0 : songCurrentTime)
 
 
@@ -142,6 +143,7 @@ Page({
         var index = this.data.currentSong.index + 1
         //如果到了歌单最后,则不再继续播放
         if (index >= this.data.songList.length) {
+            wx.showToast({ title: '已经是最后一首了！', icon: 'none' })
             return
         }
         wx.showToast({ title: '已切换到下一首...', icon: 'none' })

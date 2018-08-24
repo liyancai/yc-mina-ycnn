@@ -230,13 +230,6 @@ Page({
                 "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=209326&type=lrc"
             },
             {
-                "title": "九九八十一",
-                "author": "特曼",
-                "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=440353219&type=pic",
-                "url": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=440353219&type=url",
-                "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=440353219&type=lrc"
-            },
-            {
                 "title": "离人愁",
                 "author": "李袁杰",
                 "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=536502758&type=pic",
@@ -361,13 +354,6 @@ Page({
                 "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=60102&type=pic",
                 "url": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=60102&type=url",
                 "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=60102&type=lrc"
-            },
-            {
-                "title": "大大世界",
-                "author": "乔维怡",
-                "pic": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=285012&type=pic",
-                "url": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=285012&type=url",
-                "lrc": "https:\/\/api.hibai.cn\/music\/Music\/Music?id=285012&type=lrc"
             },
             {
                 "title": "Why Would I Ever",
@@ -886,6 +872,7 @@ Page({
         var index = this.data.currentSong.index + 1
         //如果到了歌单最后,则不再继续播放
         if (index >= this.data.songList.length) {
+            wx.showToast({ title: '已经是最后一首了！', icon: 'none' })
             return
         }
         wx.showToast({ title: '已切换到下一首...', icon: 'none' })
