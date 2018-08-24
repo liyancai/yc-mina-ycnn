@@ -11,7 +11,6 @@ Page({
         songCurrentTime: 0,
         songCurrentTimeStr: '0:00',
         songTimeStr: '0:00',
-        timer: null,
     },
     onLoad: function (options) {
         this.setData({
@@ -25,43 +24,13 @@ Page({
         music.backgroundAudioManager.onPlay(function () {
             console.log('player-onPlay........')
             that.playSong()
-
-            var songCurrentTime = music.backgroundAudioManager.currentTime
-            songCurrentTime = Math.floor(songCurrentTime == undefined ? 0 : songCurrentTime)
-
-            if (that.data.timer != null && that.data.timer != undefined) {
-                clearInterval(that.data.timer)
-            }
-            that.setData({
-                songCurrentTime: songCurrentTime,
-                songCurrentTimeStr: musicUtil.formatTime(songCurrentTime),
-                timer: setInterval(function () {
-                    var currentTime = that.data.songCurrentTime + 1
-                    that.setData({
-                        songCurrentTime: currentTime,
-                        songCurrentTimeStr: musicUtil.formatTime(currentTime)
-                    })
-                    if (currentTime > that.data.songTime) {
-                        clearInterval(that.data.timer)
-                    }
-                }, 1000)
-            })
         });
         music.backgroundAudioManager.onCanplay(function () {
             console.log('player-onCanplay........')
-
-            var songTime = Math.floor(music.backgroundAudioManager.duration)
-            that.setData({
-                songTime: Math.floor(songTime),
-                songTimeStr: musicUtil.formatTime(songTime)
-            })
         });
         music.backgroundAudioManager.onPause(function () {
             console.log('player-onPause........')
             that.pauseSong()
-            if(that.data.timer != null && that.data.timer != undefined) {
-                clearInterval(that.data.timer)
-            }
         });
         music.backgroundAudioManager.onStop(function () {
             console.log('player-onStop........')
@@ -73,6 +42,16 @@ Page({
         });
         music.backgroundAudioManager.onTimeUpdate(function () {
             // console.log('player-onTimeUpdate........')
+            var songTime = music.backgroundAudioManager.duration
+            var songCurrentTime = music.backgroundAudioManager.currentTime
+            songTime = Math.floor(songTime == undefined ? 0 : songTime)
+            songCurrentTime = Math.floor(songCurrentTime == undefined ? 0 : songCurrentTime)
+            that.setData({
+                songTime: songTime,
+                songTimeStr: musicUtil.formatTime(songTime),
+                songCurrentTime: songCurrentTime,
+                songCurrentTimeStr: musicUtil.formatTime(songCurrentTime)
+            })
         });
         music.backgroundAudioManager.onError(function () {
             console.log('player-onError........')
@@ -90,34 +69,7 @@ Page({
     onShow: function () {
         if (music.currentSong != undefined) {
             var that = this
-
             this.playSong(music.currentSong)
-
-            var songTime = music.backgroundAudioManager.duration
-            var songCurrentTime = music.backgroundAudioManager.currentTime
-            songTime = Math.floor(songTime == undefined ? 0 : songTime)
-            songCurrentTime = Math.floor(songCurrentTime == undefined ? 0 : songCurrentTime)
-
-
-            if(that.data.timer != null && that.data.timer != undefined) {
-                clearInterval(that.data.timer)
-            }
-            that.setData({
-                songTime: songTime,
-                songTimeStr: musicUtil.formatTime(songTime),
-                songCurrentTime: songCurrentTime,
-                songCurrentTimeStr: musicUtil.formatTime(songCurrentTime),
-                timer: setInterval(function () {
-                    var currentTime = that.data.songCurrentTime + 1
-                    that.setData({
-                        songCurrentTime: currentTime,
-                        songCurrentTimeStr: musicUtil.formatTime(currentTime)
-                    })
-                    if (currentTime > that.data.songTime) {
-                        clearInterval(that.data.timer)
-                    }
-                }, 1000)
-            })
         }
     },
     bindPlayFunc: function (e) {
