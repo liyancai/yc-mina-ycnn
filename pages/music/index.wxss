@@ -1,12 +1,54 @@
-swiper,
-swiper swiper-item,
-swiper swiper-item image {
-    width: 100vw; height: 40vh;
+/* 页头当前播放歌曲区域 */
+.song-playing-view {
+    width: 100vw; height: 10vh;
+    background: #339966;
+    color: #fff;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+}
+.song-playing-view image {
+    width: 80rpx; height: 80rpx;
+    background-color: #eee;
+}
+.song-playing-view .song-info {
+    width: 430rpx;
+}
+.song-playing-view .song-info view:last-child { font-size: 10pt; }
+.song-playing-view .song-opt {
+    width: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.song-playing-view .song-opt image {
+    width: 50rpx; height: 50rpx;
+    padding: 10rpx;
+    border-radius: 50%;
 }
 
+.song-playing-view.pause,
+.song-playing-view.playing { display: flex; }
+
+.song-playing-view .song-opt image:first-child { display: block; }
+.song-playing-view .song-opt image:last-child { display: none; }
+
+.song-playing-view.playing .song-opt image:first-child { display: none; }
+.song-playing-view.playing .song-opt image:last-child { display: block; }
+
+
+
 scroll-view {
-    width: 100vw; height: 60vh;
+    width: 100vw; height: 100vh;
 }
+scroll-view.pause,
+scroll-view.playing { height: 90vh; }
+
+.album {}
+
+
+/* 歌单列表区域 */
 .song-list {
     margin: 20rpx 30rpx;
     padding: 10px 0;
@@ -73,9 +115,4 @@ scroll-view {
 .song-list-item.pause .song-index image {
     animation: playing 5s linear infinite;
     animation-play-state: paused;
-}
-
-@keyframes playing {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
