@@ -8,11 +8,12 @@
     align-items: center;
 }
 .song-playing-view image {
+    margin: 0 0 0 20rpx;
     width: 80rpx; height: 80rpx;
     background-color: #eee;
 }
 .song-playing-view .song-info {
-    width: 430rpx;
+    width: 400rpx;
 }
 .song-playing-view .song-info view:last-child { font-size: 10pt; }
 .song-playing-view .song-opt {

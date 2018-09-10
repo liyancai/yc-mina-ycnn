@@ -1,5 +1,5 @@
 <view class="song-playing-view {{songStatus}}">
-    <image src="{{currentSong.cover}}"></image>
+    <image src="{{currentSong.cover}}" data-index='{{currentSong.index}}' bindtap='gotoPlayer'></image>
     <view class='song-info' data-index='{{currentSong.index}}' bindtap='gotoPlayer'>
         <view class="yc-ellipsis text-line-1">{{currentSong.title}}</view>
         <view class="yc-ellipsis text-line-1">{{currentSong.singer}}</view>
