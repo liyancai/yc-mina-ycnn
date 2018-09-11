@@ -33,4 +33,7 @@
         </view>
     </block>
     </view>
+    <view class='song-list-bottom' wx:if="{{songList.length > 0}}">
+        <text>—— 已经到底了哦! ——</text>
+    </view>
 </scroll-view>
