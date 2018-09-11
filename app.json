@@ -1,10 +1,11 @@
 {
-    "pages":[
+    "pages": [
+        "pages/music/index",
+        "pages/music/player",
+        
         "pages/index/index",
         "pages/html5/nan",
         "pages/html5/love",
-        "pages/music/index",
-        "pages/music/player",                
         "pages/demo/canvas",
         "pages/demo/video",
         "pages/demo/scroll-view",
@@ -35,12 +36,12 @@
                 "text": "you"
             },
             {
-                "pagePath": "pages/music/index",
+                "pagePath": "pages/demo/touches",
                 "text": "!"
             }
         ]
     },
-    "requiredBackgroundModes": true,
+    "requiredBackgroundModes": [ "audio" ],
     "networkTimeout": {
         "request": 10000,
         "downloadFile": 10000

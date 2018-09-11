@@ -10,6 +10,7 @@
 .song-playing-view image {
     margin: 0 0 0 20rpx;
     width: 80rpx; height: 80rpx;
+    border-radius: 50%;
     background-color: #eee;
 }
 .song-playing-view .song-info {
@@ -24,7 +25,7 @@
     align-items: center;
 }
 .song-playing-view .song-opt image {
-    width: 50rpx; height: 50rpx;
+    width: 30rpx; height: 30rpx;
     padding: 10rpx;
     border-radius: 50%;
 }
@@ -74,7 +75,7 @@ scroll-view.playing { height: 90vh; }
 .song-list-item .song-index image {
     width: 80rpx; height: 80rpx;
     background-color: #eee;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 .song-list-item .song-info {
     width: 430rpx;
@@ -90,7 +91,6 @@ scroll-view.playing { height: 90vh; }
 .song-list-item .song-opt image {
     width: 50rpx; height: 50rpx;
     padding: 10rpx;
-    border-radius: 50%;
 }
 .song-list-item .song-opt image:first-child { display: block; }
 .song-list-item .song-opt image:last-child { display: none; }
@@ -108,12 +108,13 @@ scroll-view.playing { height: 90vh; }
 .song-list-item.playing .song-opt image:last-child { display: block; }
 
 
-
-.song-list-item.playing .song-index image {
+.song-playing-view.playing>image {
     animation: playing 5s linear infinite;
     animation-play-state: running;
+    -webkit-animation-play-state: running;
 }
-.song-list-item.pause .song-index image {
+.song-playing-view.pause>image {
     animation: playing 5s linear infinite;
     animation-play-state: paused;
+    -webkit-animation-play-state: paused;
 }
