@@ -58,7 +58,7 @@ scroll-view.playing { height: 90vh; }
     border-radius: 3px;
 }
 .song-list-bottom {
-    margin: 30rpx 0;
+    padding: 30rpx 0;
     text-align: center;
     color: #b2b2b2; font-size: 10pt;
 }
