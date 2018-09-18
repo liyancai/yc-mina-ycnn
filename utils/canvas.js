@@ -25,6 +25,17 @@ const fillMultipleText = (ctx, cont, x, y, maxWidth, lineHeight, lineCount) => {
         text = cont.substring(index, j)
         metrics = ctx.measureText(text)
         if (metrics.width > maxWidth || j == cont.length) {
+
+            let len = text.length
+            if (len <= 0) {
+                break
+            }
+
+            // 如果在最后一行还没有渲染完，则将最后一个字符替换为'...'
+            if (metrics.width > maxWidth && line == lineCount) {
+                text = text.substring(0, len > 1 ? len - 1 : 1) + '…'
+            }
+
             ctx.fillText(text, x, y)
             index = j
             y += lineHeight
