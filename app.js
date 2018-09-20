@@ -25,7 +25,7 @@ App({
 
                 console.log(res)
 
-                if (res.code == 200) {
+                if (res.code == 200 || res.status == 200) {
                     if (_successFunc && (typeof _successFunc == 'function')) {
                         _successFunc(res);
                     }
@@ -38,7 +38,9 @@ App({
                 }
             },
             fail: function (data) {
-                that.showToast(JSON.stringify(data))
+              if(data.errMsg) {
+                that.showToast(data.errMsg.replace('request:fail timeout', '请求超时!'))
+              }
             },
             complete: function (res) {
                 wx.hideNavigationBarLoading()

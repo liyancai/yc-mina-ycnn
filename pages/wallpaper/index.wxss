@@ -1,0 +1,33 @@
+image {
+  width: 100%; height: 100%;
+  background: #FFFFDF;
+}
+view.layout-3,
+view.layout-5 {
+  padding: 8rpx 15rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.layout-5-left,
+.layout-5-right {
+  width: 352rpx; height: 626rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.layout-5-right-top,
+.layout-5-right-bottom {
+  width: 352rpx; height: 305rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.layout-5-right-top image,
+.layout-5-right-bottom image {
+  width: 168rpx; height: 305rpx;
+}
+
+.layout-3 image {
+  width: 230rpx; height: 410rpx;
+}

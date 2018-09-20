@@ -1,5 +1,7 @@
 {
     "pages": [
+        "pages/wallpaper/index",
+
         "pages/music/index",
         "pages/music/player",
         
@@ -24,26 +26,18 @@
         "backgroundColor": "#fff",
         "list": [
             {
-                "pagePath": "pages/index/index",
-                "text": "I"
+                "pagePath": "pages/wallpaper/index",
+                "text": "壁纸"
             },
             {
-                "pagePath": "pages/html5/love",
-                "text": "love"
-            },
-            {
-                "pagePath": "pages/html5/nan",
-                "text": "you"
-            },
-            {
-                "pagePath": "pages/demo/touches",
-                "text": "!"
+                "pagePath": "pages/music/index",
+                "text": "音乐"
             }
         ]
     },
     "requiredBackgroundModes": [ "audio" ],
     "networkTimeout": {
-        "request": 10000,
+        "request": 15000,
         "downloadFile": 10000
     },
     "debug": false

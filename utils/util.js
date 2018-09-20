@@ -14,6 +14,17 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const previewImage = event => {
+  var src = event.currentTarget.dataset.src;//获取data-src
+  var imgList = event.currentTarget.dataset.list;//获取data-list
+  //图片预览
+  wx.previewImage({
+    current: src, // 当前显示图片的http链接
+    urls: imgList // 需要预览的图片http链接列表
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  previewImage: previewImage
 }
