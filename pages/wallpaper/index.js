@@ -4,6 +4,7 @@ const listUtil = require('../../utils/list.js')
 
 Page({
   data: {
+    showInfo: false,
     pageInfo: {
       pno: 1,
       psize: 24,
@@ -67,6 +68,12 @@ Page({
     wx.previewImage({
       current: src, // 当前显示图片的http链接
       urls: [src] // 需要预览的图片http链接列表
+    })
+  },
+  toggleInfoView() {
+    let that = this
+    this.setData({
+      showInfo: !that.data.showInfo
     })
   },
   onPullDownRefresh: function () {

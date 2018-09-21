@@ -22,3 +22,15 @@
   </view>
 
 </block>
+
+<view class='info-btn' bindtap='toggleInfoView'>
+  <image src='../../images/info.png'></image>
+</view>
+<view class='info {{showInfo ? "active" : ""}}'>
+  <view class='bg'></view>
+  <view class='content'>
+    <text>· 欢迎您来到YC·高清壁纸，希望在海量的壁纸中，能够找到你心中所爱。</text>
+    <text>· 本站所有图片均来自网站[wallhaven], 网址：https://alpha.wallhaven.cc, 如有侵权请联系微信号(flame_Liyc), 我们会立即停止服务。</text>
+    <text>· 承接小程序开发，如有需要请联系微信号(flame_Liyc)。</text>
+  </view>
+</view>
