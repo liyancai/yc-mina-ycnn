@@ -10,7 +10,6 @@ Page({
       loadAll: false,
     },
     dataList: [],
-    imageList: [],
   },
   onLoad: function (options) {
     this.getData(this.data.pageInfo.pno)
@@ -20,7 +19,6 @@ Page({
     if (pno == 1 && !this.data.pageInfo.loadAll) {
       this.setData({
         dataList: [],
-        imageList: [],
         pageInfo: { loadAll: false }
       })
     }
@@ -37,7 +35,6 @@ Page({
 
       that.setData({
         dataList: that.data.dataList.concat(listUtil.splitList(list, 8)),
-        imageList: that.data.imageList.concat(list)
       })
 
       if (that.data.dataList.length == 0) {
@@ -57,16 +54,20 @@ Page({
   bindImageError: function(e) {
     let dataset = e.currentTarget.dataset
 
-    let dataList = this.data.dataList, imageList = this.data.imageList
-    dataList[dataset.index][dataset.pos] = imageList[dataset.index * this.data.pageInfo.psize + dataset.pos] = dataset.src.replace(".jpg", ".png")
+    let dataList = this.data.dataList
+    dataList[dataset.index][dataset.pos] = dataset.src.replace(".jpg", ".png")
     
     this.setData({
       dataList: dataList,
-      imageList: imageList
     })
   },
   previewImage: function (event) {
-    util.previewImage(event)
+    var src = event.currentTarget.dataset.src;//获取data-src
+    //图片预览  //考虑图片较大，预览列表时，相应也较慢，所以只预览当前照片，不预览列表
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: [src] // 需要预览的图片http链接列表
+    })
   },
   onPullDownRefresh: function () {
     this.setData({
