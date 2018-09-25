@@ -39,7 +39,7 @@ App({
             },
             fail: function (data) {
               if(data.errMsg) {
-                that.showToast(data.errMsg.replace('request:fail timeout', '请求超时!'))
+                that.showToast(data.errMsg.replace('request:fail timeout', '小站有点忙，请重试下吧!'))
               }
             },
             complete: function (res) {

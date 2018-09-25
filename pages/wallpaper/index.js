@@ -53,6 +53,12 @@ Page({
     })
   },
   bindImageError: function(e) {
+    if (e.detail.errMsg.indexOf('404 (Not Found)') == -1) {
+      console.log(e.detail)
+      return
+    }
+
+    //图片地址找不到时将 jpg 扩展名替换为 png
     let dataset = e.currentTarget.dataset
 
     let dataList = this.data.dataList
@@ -63,12 +69,7 @@ Page({
     })
   },
   previewImage: function (event) {
-    var src = event.currentTarget.dataset.src;//获取data-src
-    //图片预览  //考虑图片较大，预览列表时，相应也较慢，所以只预览当前照片，不预览列表
-    wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: [src] // 需要预览的图片http链接列表
-    })
+    util.previewImage(event)
   },
   toggleInfoView() {
     let that = this
