@@ -1,18 +1,18 @@
 <block wx:for="{{dataList}}" wx:key="{{index}}">
 
   <view class='layout-5'>
+    <view class='layout-5-left'>
+      <image src='{{item[0]}}' lazy-load='true' data-src='{{item[0]}}' data-list='{{item}}' data-index='{{index}}' data-pos='0' binderror='bindImageError' bindtap='previewImage'></image>
+    </view>
     <view class='layout-5-right'>
       <view class='layout-5-right-top'>
-        <image src='{{item[0]}}' lazy-load='true' data-src='{{item[0]}}' data-list='{{item}}' data-index='{{index}}' data-pos='0' binderror='bindImageError' bindtap='previewImage'></image>
         <image src='{{item[1]}}' lazy-load='true' data-src='{{item[1]}}' data-list='{{item}}' data-index='{{index}}' data-pos='1' binderror='bindImageError' bindtap='previewImage'></image>
+        <image src='{{item[2]}}' lazy-load='true' data-src='{{item[2]}}' data-list='{{item}}' data-index='{{index}}' data-pos='2' binderror='bindImageError' bindtap='previewImage'></image>
       </view>
       <view class='layout-5-right-bottom'>
-        <image src='{{item[2]}}' lazy-load='true' data-src='{{item[2]}}' data-list='{{item}}' data-index='{{index}}' data-pos='2' binderror='bindImageError' bindtap='previewImage'></image>
         <image src='{{item[3]}}' lazy-load='true' data-src='{{item[3]}}' data-list='{{item}}' data-index='{{index}}' data-pos='3' binderror='bindImageError' bindtap='previewImage'></image>
+        <image src='{{item[4]}}' lazy-load='true' data-src='{{item[4]}}' data-list='{{item}}' data-index='{{index}}' data-pos='4' binderror='bindImageError' bindtap='previewImage'></image>
       </view>
-    </view>
-    <view class='layout-5-left'>
-      <image src='{{item[4]}}' lazy-load='true' data-src='{{item[4]}}' data-list='{{item}}' data-index='{{index}}' data-pos='4' binderror='bindImageError' bindtap='previewImage'></image>
     </view>
   </view>
   <view class='layout-3'>
