@@ -10,6 +10,7 @@ Page({
       psize: 24,
       loadAll: false,
     },
+    loading: false,
     dataList: [],
   },
   onLoad: function (options) {
@@ -29,6 +30,9 @@ Page({
     }
 
     var that = this;
+    this.setData({
+      loading: true
+    })
     app.doGet('https://admin.zhihuibian.com/api/wallpaper/list', {
       pno: pno,
     }, function (res) {
@@ -50,20 +54,25 @@ Page({
           pageInfo: { pno: pno + 1 }
         })
       }
+    }, function(res) {
+    }, function() {
+      that.setData({
+        loading: false
+      })
     })
   },
   bindImageError: function(e) {
-    if (e.detail.errMsg.indexOf('404 (Not Found)') == -1) {
-      console.log(e.detail)
-      return
-    }
 
     //图片地址找不到时将 jpg 扩展名替换为 png
     let dataset = e.currentTarget.dataset
-
     let dataList = this.data.dataList
-    dataList[dataset.index][dataset.pos] = dataset.src.replace(".jpg", ".png")
-    
+
+    if (e.detail.errMsg.indexOf('404 (Not Found)') > -1) {
+      dataList[dataset.index][dataset.pos] = dataset.src.replace(".jpg", ".png")
+    } else {
+      dataList[dataset.index][dataset.pos] = dataset.src.replace(".jpg", ".jpg ")
+    }
+
     this.setData({
       dataList: dataList,
     })

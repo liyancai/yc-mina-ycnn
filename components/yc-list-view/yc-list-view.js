@@ -5,11 +5,10 @@ Component({
   properties: {
     loading: {
       type: Boolean,
-      value: 'no',
+      value: true,
       observer: function(newVal, oldVal, changedPath) {
       }
     },
-    yc: String
   },
 
   /**
