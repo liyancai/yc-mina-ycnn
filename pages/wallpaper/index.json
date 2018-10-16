@@ -1,7 +1,0 @@
-{
-    "enablePullDownRefresh": false,
-    "navigationBarTitleText": "YC·高清壁纸",
-    "usingComponents": {
-      "yc-list-view": "../../components/yc-list-view/yc-list-view"
-    }
-}
