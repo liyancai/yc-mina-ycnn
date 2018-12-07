@@ -4,11 +4,15 @@ const musicUtil = require('../../utils/music.js')
 
 Page({
     data: {
+        db: null,
         currentSong: {},
         songList: [],
         songStatus: ''
     },
     onLoad: function (options) {
+        this.setData({
+          db: wx.cloud.database()
+        })
         this.getSongList()
 
         var that = this
@@ -63,41 +67,46 @@ Page({
         }
     },
     getSongList: function() {
-        var that = this
+
+      var that = this
+
+      const coll = this.data.db.collection('songsheet')
+      coll.get().then(res => {
+        let list = res.data
+        let idList = list.map(it => {
+          return it.m163id
+        })
+
         app.doGet("https://music.163.com/api/song/detail/", {
-            ids: [
-                531295576, 401723037, 417250673, 517009807, 34723470, 350749, 416552313, 507815173,
-                296836, 296837, 26113988, 60102, 497861301, 31473269, 448184048, 30089063, 459723209,
-                569214126, 296837, 487190794, 461525011, 450424527, 514765154, 452613551, 471403427,
-                5239564, 437387277, 208902, 29450548, 526464145, 209326, 208938,
-                444058254
-            ]
-        }, function(res) {
-            var songList = []
-            for (let i = 0; i < res.songs.length; i++) {
-                let s = res.songs[i]
+          ids: idList
+        }, function (res) {
+          var songList = []
+          for (let i = 0; i < res.songs.length; i++) {
+            let s = res.songs[i]
 
-                let singerArray = []
-                for (let j = 0; j < s.artists.length; j++){
-                    singerArray.push(s.artists[j].name)
-                }
-
-                songList.push({
-                    id: 'id-' + i,
-                    index: i,
-                    title: s.name,
-                    epname: s.album.name,
-                    singer: singerArray.join(' '),
-                    cover: s.album.picUrl,
-                    url: "https://api.hibai.cn/music/Music/Music?id=" + s.id + "&type=url"
-                })
+            let singerArray = []
+            for (let j = 0; j < s.artists.length; j++) {
+              singerArray.push(s.artists[j].name)
             }
 
-            music.songSheet = songList
-            that.setData({
-                songList: music.songSheet
+            songList.push({
+              id: 'id-' + i,
+              index: i,
+              title: s.name,
+              epname: s.album.name,
+              singer: singerArray.join(' '),
+              cover: s.album.picUrl,
+              url: "https://api.hibai.cn/music/Music/Music?id=" + s.id + "&type=url"
             })
+          }
+
+          music.songSheet = songList
+          that.setData({
+            songList: music.songSheet
+          })
         })
+
+      })
     },
     bindPlayFunc: function (e) {
         var song = this.data.songList[e.currentTarget.dataset.index]
