@@ -1,0 +1,4 @@
+<progress percent="{{dayPercent}}" show-info />
+<progress percent="{{monthPercent}}" show-info stroke-width="12" />
+<progress percent="{{yearPercent}}" show-info activeColor="pink" />
+<progress percent="{{lifePercent}}" active show-info stroke-width="10" />
